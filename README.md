@@ -1,2 +1,2 @@
-# tool_tracker
+# Introduction
 Real-time tracking of a manipulator's end-effector using vision
