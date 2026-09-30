@@ -1,0 +1,1 @@
+/home/zuhurouf/ros2_ws/tool_tracker/src/external/open_manipulator/open_manipulator_x_moveit_config/launch/setup_assistant.launch.py
