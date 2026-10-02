@@ -1,0 +1,98 @@
+[0.012s] Invoking command in '/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_gui': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuhurouf/ros2_ws/tool_tracker/install/tool_tracker:/opt/ros/humble /usr/bin/cmake /home/zuhurouf/ros2_ws/tool_tracker/src/external/open_manipulator/open_manipulator_x_gui -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui
+[0.061s] -- The C compiler identification is GNU 11.4.0
+[0.112s] -- The CXX compiler identification is GNU 11.4.0
+[0.121s] -- Detecting C compiler ABI info
+[0.178s] -- Detecting C compiler ABI info - done
+[0.184s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.184s] -- Detecting C compile features
+[0.185s] -- Detecting C compile features - done
+[0.187s] -- Detecting CXX compiler ABI info
+[0.249s] -- Detecting CXX compiler ABI info - done
+[0.255s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.255s] -- Detecting CXX compile features
+[0.255s] -- Detecting CXX compile features - done
+[0.257s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.389s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.450s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.476s] -- Found geometry_msgs: 4.9.2 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.509s] -- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.513s] -- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.521s] -- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.533s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.546s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.577s] -- Found rclcpp: 16.0.21 (/opt/ros/humble/share/rclcpp/cmake)
+[0.608s] -- Found rmw_implementation_cmake: 6.1.4 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.610s] -- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.688s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.726s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.766s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.774s] -- Looking for pthread.h
+[0.830s] -- Looking for pthread.h - found
+[0.830s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.890s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.891s] -- Found Threads: TRUE  
+[0.952s] -- Found sensor_msgs: 4.9.2 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.967s] -- Found moveit_msgs: 2.2.3 (/opt/ros/humble/share/moveit_msgs/cmake)
+[1.089s] -- Found moveit_ros_planning: 2.5.10 (/opt/ros/humble/share/moveit_ros_planning/cmake)
+[1.116s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono 
+[1.274s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread 
+[1.358s] -- Found tcb_span: 1.3.2 (/opt/ros/humble/share/tcb_span/cmake)
+[1.367s] -- Found rclcpp_lifecycle: 16.0.21 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)
+[1.401s] -- Found parameter_traits: 0.7.6 (/opt/ros/humble/share/parameter_traits/cmake)
+[1.519s] -- library: /usr/lib/x86_64-linux-gnu/libcurl.so
+[1.551s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[1.552s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[1.597s] -- Found moveit_ros_planning_interface: 2.5.10 (/opt/ros/humble/share/moveit_ros_planning_interface/cmake)
+[1.602s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread 
+[1.619s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options 
+[1.645s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread 
+[1.801s] -- Configuring done
+[1.849s] -- Generating done
+[1.865s] -- Build files have been written to: /home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_gui
+[1.903s] Invoked command in '/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_gui' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuhurouf/ros2_ws/tool_tracker/install/tool_tracker:/opt/ros/humble /usr/bin/cmake /home/zuhurouf/ros2_ws/tool_tracker/src/external/open_manipulator/open_manipulator_x_gui -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui
+[1.904s] Invoking command in '/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_gui': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuhurouf/ros2_ws/tool_tracker/install/tool_tracker:/opt/ros/humble /usr/bin/cmake --build /home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_gui -- -j12 -l12
+[1.995s] [  7%] [34m[1mGenerating ui_main_window.h[0m
+[2.039s] [ 15%] [34m[1mGenerating gui_headers/ui_main_window.h[0m
+[2.071s] [ 15%] Built target copy_ui_header
+[2.119s] [ 23%] [34m[1mAutomatic MOC and UIC for target open_manipulator_x_gui_node[0m
+[2.181s] [ 23%] Built target open_manipulator_x_gui_node_autogen
+[2.200s] [ 30%] [34m[1mGenerating include/open_manipulator_x_gui/moc_qnode.cpp[0m
+[2.207s] [ 38%] [34m[1mGenerating include/open_manipulator_x_gui/moc_main_window.cpp[0m
+[2.256s] [ 46%] [32mBuilding CXX object CMakeFiles/open_manipulator_x_gui_node.dir/src/main_window.cpp.o[0m
+[2.260s] [ 61%] [32mBuilding CXX object CMakeFiles/open_manipulator_x_gui_node.dir/src/qnode.cpp.o[0m
+[2.262s] [ 69%] [32mBuilding CXX object CMakeFiles/open_manipulator_x_gui_node.dir/src/main.cpp.o[0m
+[2.262s] [ 69%] [32mBuilding CXX object CMakeFiles/open_manipulator_x_gui_node.dir/open_manipulator_x_gui_node_autogen/mocs_compilation.cpp.o[0m
+[2.264s] [ 84%] [32mBuilding CXX object CMakeFiles/open_manipulator_x_gui_node.dir/include/open_manipulator_x_gui/moc_qnode.cpp.o[0m
+[2.264s] [ 84%] [32mBuilding CXX object CMakeFiles/open_manipulator_x_gui_node.dir/include/open_manipulator_x_gui/moc_main_window.cpp.o[0m
+[16.705s] [ 92%] [32m[1mLinking CXX executable open_manipulator_x_gui_node[0m
+[17.833s] [100%] Built target open_manipulator_x_gui_node
+[17.842s] Invoked command in '/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_gui' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuhurouf/ros2_ws/tool_tracker/install/tool_tracker:/opt/ros/humble /usr/bin/cmake --build /home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_gui -- -j12 -l12
+[17.843s] Invoking command in '/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_gui': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuhurouf/ros2_ws/tool_tracker/install/tool_tracker:/opt/ros/humble /usr/bin/cmake --install /home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_gui
+[17.848s] -- Install configuration: ""
+[17.849s] -- Execute custom install script
+[17.849s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/lib/open_manipulator_x_gui/open_manipulator_x_gui_node
+[17.856s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/include/open_manipulator_x_gui/main_window.hpp
+[17.862s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/include/open_manipulator_x_gui/qnode.hpp
+[17.869s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/launch/open_manipulator_x_gui.launch.py
+[17.876s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/ui/main_window.ui
+[17.883s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/config/robot_joint_log.csv
+[17.889s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/environment/library_path.sh
+[17.896s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/environment/library_path.dsv
+[17.903s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/ament_index/resource_index/package_run_dependencies/open_manipulator_x_gui
+[17.910s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/ament_index/resource_index/parent_prefix_path/open_manipulator_x_gui
+[17.917s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/environment/ament_prefix_path.sh
+[17.923s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/environment/ament_prefix_path.dsv
+[17.930s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/environment/path.sh
+[17.937s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/environment/path.dsv
+[17.943s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/local_setup.bash
+[17.950s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/local_setup.sh
+[17.956s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/local_setup.zsh
+[17.963s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/local_setup.dsv
+[17.970s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/package.dsv
+[17.976s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/ament_index/resource_index/packages/open_manipulator_x_gui
+[17.983s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/cmake/ament_cmake_export_include_directories-extras.cmake
+[17.990s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/cmake/ament_cmake_export_libraries-extras.cmake
+[17.997s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/cmake/open_manipulator_x_guiConfig.cmake
+[18.003s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/cmake/open_manipulator_x_guiConfig-version.cmake
+[18.010s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui/share/open_manipulator_x_gui/package.xml
+[18.019s] Invoked command in '/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_gui' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuhurouf/ros2_ws/tool_tracker/install/tool_tracker:/opt/ros/humble /usr/bin/cmake --install /home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_gui

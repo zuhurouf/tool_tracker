@@ -11,18 +11,23 @@ setup(
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        (os.path.join('share', package_name, 'launch'), glob('launch/*.py')),
-        (os.path.join('share', package_name, 'urdf'), glob('urdf/*.xacro')),
+        (os.path.join("share", package_name, "launch"), glob("launch/*.py")),
+        (os.path.join("share", package_name, "urdf"), glob("urdf/*.xacro"))
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='your_name',
-    maintainer_email='your_email@domain.com',
-    description='End-effector tracking using ROS 2 and Gazebo Fortress',
-    license='Apache-2.0',
+    maintainer='zuhurouf',
+    maintainer_email='zuhuroufsinu712000@gmail.com',
+    description='Real-time tracking of manipulato\'s end-effector using vision',
+    license='TODO: License declaration',
+    extras_require={
+        'test': [
+            'pytest',
+        ],
+    },
     entry_points={
         'console_scripts': [
-            'tracking_node = tool_tracker.tracking_node:main'
+            'tracker_node = tool_tracker.tracker_node:main'
         ],
     },
 )

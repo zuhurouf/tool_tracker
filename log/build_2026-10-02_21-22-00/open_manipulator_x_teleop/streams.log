@@ -1,0 +1,69 @@
+[0.038s] Invoking command in '/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_teleop': CMAKE_PREFIX_PATH=/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_moveit_config:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_bringup:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_description:/home/zuhurouf/ros2_ws/tool_tracker/install/zed_description:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_playground:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui:/home/zuhurouf/ros2_ws/tool_tracker/install/tool_tracker:/opt/ros/humble /usr/bin/cmake /home/zuhurouf/ros2_ws/tool_tracker/src/external/open_manipulator/open_manipulator_x_teleop -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop
+[0.207s] -- The C compiler identification is GNU 11.4.0
+[0.400s] -- The CXX compiler identification is GNU 11.4.0
+[0.433s] -- Detecting C compiler ABI info
+[0.638s] -- Detecting C compiler ABI info - done
+[0.654s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.655s] -- Detecting C compile features
+[0.655s] -- Detecting C compile features - done
+[0.660s] -- Detecting CXX compiler ABI info
+[0.792s] -- Detecting CXX compiler ABI info - done
+[0.799s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.799s] -- Detecting CXX compile features
+[0.799s] -- Detecting CXX compile features - done
+[0.802s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.984s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.077s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.135s] -- Found rclcpp: 16.0.21 (/opt/ros/humble/share/rclcpp/cmake)
+[1.211s] -- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.224s] -- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.237s] -- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.253s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.272s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.322s] -- Found rmw_implementation_cmake: 6.1.4 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.325s] -- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.422s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.453s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.496s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.508s] -- Looking for pthread.h
+[1.582s] -- Looking for pthread.h - found
+[1.583s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.652s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.653s] -- Found Threads: TRUE  
+[1.718s] -- Found open_manipulator_x_bringup: 3.0.4 (/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_bringup/share/open_manipulator_x_bringup/cmake)
+[1.718s] -- Found open_manipulator_x_moveit_config: 3.0.4 (/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_moveit_config/share/open_manipulator_x_moveit_config/cmake)
+[1.718s] -- Found open_manipulator_x_description: 3.0.4 (/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_description/share/open_manipulator_x_description/cmake)
+[1.721s] -- Found geometry_msgs: 4.9.2 (/opt/ros/humble/share/geometry_msgs/cmake)
+[1.735s] -- Found nav_msgs: 4.9.2 (/opt/ros/humble/share/nav_msgs/cmake)
+[1.756s] -- Found control_msgs: 4.9.0 (/opt/ros/humble/share/control_msgs/cmake)
+[1.846s] -- Found std_srvs: 4.9.2 (/opt/ros/humble/share/std_srvs/cmake)
+[1.855s] -- Found rclcpp_action: 16.0.21 (/opt/ros/humble/share/rclcpp_action/cmake)
+[1.964s] -- Configuring done
+[1.975s] -- Generating done
+[1.980s] -- Build files have been written to: /home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_teleop
+[1.991s] Invoked command in '/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_teleop' returned '0': CMAKE_PREFIX_PATH=/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_moveit_config:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_bringup:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_description:/home/zuhurouf/ros2_ws/tool_tracker/install/zed_description:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_playground:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui:/home/zuhurouf/ros2_ws/tool_tracker/install/tool_tracker:/opt/ros/humble /usr/bin/cmake /home/zuhurouf/ros2_ws/tool_tracker/src/external/open_manipulator/open_manipulator_x_teleop -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop
+[1.993s] Invoking command in '/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_teleop': CMAKE_PREFIX_PATH=/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_moveit_config:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_bringup:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_description:/home/zuhurouf/ros2_ws/tool_tracker/install/zed_description:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_playground:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui:/home/zuhurouf/ros2_ws/tool_tracker/install/tool_tracker:/opt/ros/humble /usr/bin/cmake --build /home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_teleop -- -j12 -l12
+[2.048s] [ 50%] [32mBuilding CXX object CMakeFiles/open_manipulator_x_teleop.dir/src/open_manipulator_x_teleop.cpp.o[0m
+[9.925s] [100%] [32m[1mLinking CXX executable open_manipulator_x_teleop[0m
+[10.295s] [100%] Built target open_manipulator_x_teleop
+[10.310s] Invoked command in '/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_teleop' returned '0': CMAKE_PREFIX_PATH=/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_moveit_config:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_bringup:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_description:/home/zuhurouf/ros2_ws/tool_tracker/install/zed_description:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_playground:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui:/home/zuhurouf/ros2_ws/tool_tracker/install/tool_tracker:/opt/ros/humble /usr/bin/cmake --build /home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_teleop -- -j12 -l12
+[10.312s] Invoking command in '/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_teleop': CMAKE_PREFIX_PATH=/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_moveit_config:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_bringup:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_description:/home/zuhurouf/ros2_ws/tool_tracker/install/zed_description:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_playground:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui:/home/zuhurouf/ros2_ws/tool_tracker/install/tool_tracker:/opt/ros/humble /usr/bin/cmake --install /home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_teleop
+[10.321s] -- Install configuration: ""
+[10.321s] -- Execute custom install script
+[10.322s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/lib/open_manipulator_x_teleop/open_manipulator_x_teleop
+[10.332s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/ament_index/resource_index/package_run_dependencies/open_manipulator_x_teleop
+[10.342s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/ament_index/resource_index/parent_prefix_path/open_manipulator_x_teleop
+[10.353s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/open_manipulator_x_teleop/environment/ament_prefix_path.sh
+[10.363s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/open_manipulator_x_teleop/environment/ament_prefix_path.dsv
+[10.374s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/open_manipulator_x_teleop/environment/path.sh
+[10.384s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/open_manipulator_x_teleop/environment/path.dsv
+[10.395s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/open_manipulator_x_teleop/local_setup.bash
+[10.405s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/open_manipulator_x_teleop/local_setup.sh
+[10.415s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/open_manipulator_x_teleop/local_setup.zsh
+[10.425s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/open_manipulator_x_teleop/local_setup.dsv
+[10.435s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/open_manipulator_x_teleop/package.dsv
+[10.446s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/ament_index/resource_index/packages/open_manipulator_x_teleop
+[10.457s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/open_manipulator_x_teleop/cmake/open_manipulator_x_teleopConfig.cmake
+[10.467s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/open_manipulator_x_teleop/cmake/open_manipulator_x_teleopConfig-version.cmake
+[10.478s] -- Symlinking: /home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop/share/open_manipulator_x_teleop/package.xml
+[10.492s] Invoked command in '/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_teleop' returned '0': CMAKE_PREFIX_PATH=/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_moveit_config:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_bringup:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_description:/home/zuhurouf/ros2_ws/tool_tracker/install/zed_description:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_teleop:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_playground:/home/zuhurouf/ros2_ws/tool_tracker/install/open_manipulator_x_gui:/home/zuhurouf/ros2_ws/tool_tracker/install/tool_tracker:/opt/ros/humble /usr/bin/cmake --install /home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_teleop

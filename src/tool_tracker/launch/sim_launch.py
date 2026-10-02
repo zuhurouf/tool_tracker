@@ -1,47 +1,70 @@
 import os
-from launch import LaunchDescription
-from launch.actions import ExecuteProcess
-from launch_ros.actions import Node
-from ament_index_python.packages import get_package_share_directory
+import xml.etree.ElementTree as ET
 import xacro
+from launch_ros.actions import Node
+from launch import LaunchDescription
+from launch.actions import ExecuteProcess, SetEnvironmentVariable
+from ament_index_python.packages import get_package_share_directory
+
 
 def generate_launch_description():
-    pkg_tool_tracker = get_package_share_directory('tool_tracker')
-    xacro_file = os.path.join(pkg_tool_tracker, 'urdf', 'simulation_scene.xacro')
-    
-    # Process Xacro
-    xacro_file = os.path.join(pkg_tool_tracker, 'urdf', 'simulation_scene.xacro')
-    robot_description_raw = xacro.process_file(xacro_file).toxml()
+    pkg_tool_tracker = get_package_share_directory("tool_tracker")
+    gazebo_resource_path = os.pathsep.join(
+        filter(
+            None,
+            [
+                os.environ.get("IGN_GAZEBO_RESOURCE_PATH", ""),
+                os.path.dirname(get_package_share_directory("open_manipulator_x_description")),
+                os.path.dirname(get_package_share_directory("zed_description")),
+            ],
+        )
+    )
 
-    # Robot State Publisher
+    xacro_file = os.path.join(pkg_tool_tracker, "urdf", "simulation_scene.xacro")
+    raw_robot_description = xacro.process_file(xacro_file).toxml()
+    robot_description = ET.fromstring(raw_robot_description)
+    camera_mount = robot_description.find("link[@name='zed2i_camera_link']")
+    if camera_mount is None:
+        raise RuntimeError("ZED camera mount link is missing from the robot description")
+
+    camera_inertial = ET.SubElement(camera_mount, "inertial")
+    ET.SubElement(camera_inertial, "mass", value="0.001")
+    ET.SubElement(
+        camera_inertial,
+        "inertia",
+        ixx="0.000001",
+        ixy="0",
+        ixz="0",
+        iyy="0.000001",
+        iyz="0",
+        izz="0.000001",
+    )
+    raw_robot_description = ET.tostring(robot_description, encoding="unicode")
+
     robot_state_publisher_node = Node(
-        package='robot_state_publisher',
-        executable='robot_state_publisher',
-        parameters=[{'robot_description': robot_description_raw, 'use_sim_time': True}]
+        package="robot_state_publisher",
+        executable="robot_state_publisher",
+        parameters=[{"robot_description": raw_robot_description, "use_sim_time": True}]
     )
 
-    # Joint State Publisher GUI (to move arm joints manually in simulation)
-    joint_state_publisher_node = Node(
-        package='joint_state_publisher_gui',
-        executable='joint_state_publisher_gui',
-        name='joint_state_publisher_gui'
+    joint_state_publisher_gui_node = Node(
+        package="joint_state_publisher_gui",
+        executable="joint_state_publisher_gui",
+        name="joint_state_publisher_gui"
     )
 
-    # Spawn Gazebo Fortress Simulator
     gazebo_sim = ExecuteProcess(
-        cmd=['ign', 'gazebo', '-r', 'empty.sdf'],
-        output='screen'
+        cmd=["ign", "gazebo", "-r", "empty.sdf"],
+        output="screen"
     )
 
-    # Spawn Robot Entity into Gazebo
-    spawn_entity = Node(
-        package='ros_gz_sim',
-        executable='create',
-        arguments=['-string', robot_description_raw, '-name', 'open_manipulator_zed'],
-        output='screen'
+    robot_entity_node = Node(
+        package="ros_gz_sim",
+        executable="create",
+        arguments=["-string", raw_robot_description, "-name", "open_manipulator_zed"],
+        output="screen"
     )
 
-    # ROS-Gazebo Topic Bridge
     ros_gz_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
@@ -52,18 +75,18 @@ def generate_launch_description():
         output='screen'
     )
 
-    # Tool Tracking Node
-    tracking_node = Node(
-        package='tool_tracker',
-        executable='tracking_node',
-        output='screen'
+    tracker_node = Node(
+        package="tool_tracker",
+        executable="tracker_node",
+        output="screen"
     )
 
     return LaunchDescription([
+        SetEnvironmentVariable(name="IGN_GAZEBO_RESOURCE_PATH", value=gazebo_resource_path),
         robot_state_publisher_node,
-        joint_state_publisher_node,
+        joint_state_publisher_gui_node,
         gazebo_sim,
-        spawn_entity,
+        robot_entity_node,
         ros_gz_bridge,
-        tracking_node
+        tracker_node
     ])

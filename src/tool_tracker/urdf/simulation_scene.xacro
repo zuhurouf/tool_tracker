@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="open_manipulator_zed" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find open_manipulator_x_description)/urdf/open_manipulator_x.urdf.xacro" />
+    <xacro:include filename="$(find zed_description)/urdf/zed_macro.urdf.xacro" /> 
+    <xacro:include filename="$(find tool_tracker)/urdf/camera_sensor.xacro" />
+
+    <material name="grey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+    </material>
+    <material name="red">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+    </material>
+
+    <xacro:open_manipulator_x/>
+
+    <link name="world" />
+    <joint name="world_to_arm_joint" type="fixed">
+        <parent link="world"/>
+        <child link="link1"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+    
+    <xacro:zed_camera name="zed2i" model="zed2i">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:zed_camera>
+    <joint name="world_to_zed_joint" type="fixed">
+        <parent link="world"/>
+        <child link="zed2i_camera_link"/>
+        <origin xyz="0.6 0.0 0.4" rpy="0 0.35 3.14159"/>
+    </joint>
+
+    <xacro:zed2i_gazebo_sensor parent_link="zed2i_left_camera_frame_optical"/>
+</robot>
