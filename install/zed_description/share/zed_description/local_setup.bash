@@ -1,1 +1,0 @@
-/home/zuhurouf/ros2_ws/tool_tracker/build/zed_description/ament_cmake_environment_hooks/local_setup.bash

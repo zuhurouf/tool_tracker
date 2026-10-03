@@ -1,6 +1,0 @@
-[submodule "src/external/open_manipulator"]
-	path = src/external/open_manipulator
-	url = https://github.com/ROBOTIS-GIT/open_manipulator.git
-[submodule "src/external/zed-ros2-description"]
-	path = src/external/zed-ros2-description
-	url = https://github.com/stereolabs/zed-ros2-description.git

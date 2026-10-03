@@ -1,1 +1,0 @@
-/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_moveit_config/ament_cmake_environment_hooks/local_setup.zsh

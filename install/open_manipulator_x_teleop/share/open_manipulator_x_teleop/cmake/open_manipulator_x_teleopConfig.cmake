@@ -1,1 +1,0 @@
-/home/zuhurouf/ros2_ws/tool_tracker/build/open_manipulator_x_teleop/ament_cmake_core/open_manipulator_x_teleopConfig.cmake
