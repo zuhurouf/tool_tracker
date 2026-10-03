@@ -6,8 +6,11 @@ from ament_index_python.packages import get_package_share_directory
 
 
 def generate_launch_description():
-    pkg_panda_share_dir = get_package_share_directory("moveit_resources_panda_description")
-    xacro_file = os.path.join(pkg_panda_share_dir, "urdf", "panda.urdf")
+    pkg_panda_share_dir = get_package_share_directory("tool_tracker")
+    xacro_file = os.path.join(pkg_panda_share_dir, "urdf", "simulation_scene.xacro")
+
+    if not os.path.exists(xacro_file):
+        raise FileNotFoundError(f"Xacro file not found at expected path: {xacro_file}")
     robot_description = xacro.process_file(xacro_file).toxml()
 
     robot_state_publisher_node = Node(

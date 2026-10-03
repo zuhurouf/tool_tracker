@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="panda_vision_stage" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- 1. Include Pre-installed Panda Xacro -->
+  <xacro:include filename="$(find moveit_resources_panda_description)/urdf/panda.urdf" />
+
+  <!-- 2. Single Root Link Definition -->
+  <link name="world"/>
+
+  <joint name="world_to_panda" type="fixed">
+    <parent link="world"/>
+    <child link="panda_link0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- 3. Fixed Overhead Camera Looking at End-Effector -->
+  <link name="camera_link">
+    <visual>
+      <geometry><box size="0.05 0.05 0.05"/></geometry>
+    </visual>
+  </link>
+
+  <joint name="world_to_camera" type="fixed">
+    <parent link="world"/>
+    <child link="camera_link"/>
+    <origin xyz="0.5 0.0 0.8" rpy="0 0.785 3.14159"/>
+  </joint>
+
+  <!-- Gazebo Camera Plugin -->
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="overhead_camera">
+      <update_rate>30.0</update_rate>
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <ros>
+          <remapping>~/image_raw:=/camera/image_raw</remapping>
+        </ros>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+</robot>
