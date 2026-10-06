@@ -2,11 +2,27 @@
 
 Real-time tracking of a manipulator's end-effector using vision.
 
-## Supported setup
+## Supported Setup
 
-- Ubuntu 22.04 with ROS 2 Humble
-- Gazebo Fortress through `ros_gz`
-- A graphical desktop session for Gazebo and the OpenCV image window
+- **OS**: Ubuntu 22.04 LTS
+- **ROS Version**: ROS 2 Humble Desktop
+- **Simulator**: Gazebo Ignition Fortress 
 
-Install [ROS 2 Humble Desktop](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html)
-before continuing.
+---
+
+## Prerequisites & System Dependencies
+
+Before building the workspace, ensure all required system packages, Gazebo Fortress integrations, and description packages are installed:
+
+```bash
+# 1. Update package lists
+sudo apt update
+
+# 2. Install ROS 2 Humble Gazebo Fortress dependencies & MoveIt Panda Description
+sudo apt install -y \
+  ros-humble-ros-gz \
+  ros-humble-ros-gz-sim \
+  ros-humble-ros-gz-bridge \
+  ros-humble-moveit-resources-panda-description \
+  ros-humble-robot-state-publisher \
+  ros-humble-xacro
