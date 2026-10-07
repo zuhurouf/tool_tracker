@@ -45,7 +45,7 @@ def generate_launch_description():
               "-name", "panda_vision_stage",
               "-x", "0.0",
               "-y", "0.0",
-              "-z", "0.0"
+              "-z", "0.1"
         ],
         parameters=[{
               "robot_description": robot_description,
