@@ -9,13 +9,13 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 
 def generate_launch_description():
+    set_ign_resource_path = SetEnvironmentVariable(
+            name="IGN_GAZEBO_RESOURCE_PATH",
+            value="/opt/ros/humble/share"
+    )
     ros_gz_pkg_dir = get_package_share_directory("ros_gz_sim")
     pkg_panda_share_dir = get_package_share_directory("tool_tracker")
     xacro_file = os.path.join(pkg_panda_share_dir, "urdf", "simulation_scene.xacro")
-    set_ign_resource_path = SetEnvironmentVariable(
-        name="IGN_GAZEBO_RESOURCE_PATH",
-        value="/opt/ros/humble/share"
-    )
 
     if not os.path.exists(xacro_file):
             raise FileNotFoundError(f"Xacro file not found at expected path: {xacro_file}")
@@ -25,9 +25,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(ros_gz_pkg_dir, "launch", "gz_sim.launch.py")
         ),
-        launch_arguments={
-            'gz_args': 'empty.sdf -r'
-        }.items()
+        launch_arguments={'gz_args': 'empty.sdf -r'}.items()
     )
 
     robot_state_publisher_node = Node(
@@ -42,10 +40,10 @@ def generate_launch_description():
         executable="create",
         arguments=[
               "-topic", "robot_description",
-              "-name", "panda_vision_stage",
+              "-name", "panda_tracker",
               "-x", "0.0",
               "-y", "0.0",
-              "-z", "0.1"
+              "-z", "0.0"
         ],
         parameters=[{
               "robot_description": robot_description,
@@ -65,10 +63,17 @@ def generate_launch_description():
         output="screen"
     )
 
+    cam_subscriber_node = Node(
+          package="tool_tracker",
+          executable="CameraSubscriber_py",
+          output="screen"
+    )
+
     return LaunchDescription([
         set_ign_resource_path,  
         gazebo_node,
         robot_state_publisher_node,
+        bridge_node,
         robot_spawner_node,
-        bridge_node
+        cam_subscriber_node
     ])

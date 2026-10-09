@@ -28,6 +28,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            "CameraSubscriber_py = tool_tracker.CamSubscriber:main"
         ],
     },
 )
