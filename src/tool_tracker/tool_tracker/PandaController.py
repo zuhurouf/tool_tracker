@@ -17,11 +17,11 @@ JOINT_NAMES = (
 )
 
 HOME_POSITION = (0.0, -0.785, 0.0, -2.356, 0.0, 1.571, 0.785)
-ACTION_POSITION = (0.4, -0.5, 0.2, -2.1, 0.0, 1.7, 0.8)
+EXTENDED_POSITION = (0.0, 0.0, 0.0, 0.0, 0.0, 1.571, 0.785)
 TRAJECTORY = (
     (0.0, HOME_POSITION),
-    (4.0, ACTION_POSITION),
-    (5.0, ACTION_POSITION),
+    (4.0, EXTENDED_POSITION),
+    (6.0, EXTENDED_POSITION),
     (9.0, HOME_POSITION),
     (11.0, HOME_POSITION),
 )
@@ -44,7 +44,7 @@ class PandaController(Node):
         self.start_timer = self.create_timer(2.0, self.start_trajectory)
         self.trajectory_timer = None
         self.get_logger().info(
-            "Panda trajectory controller ready; starting home -> action -> home."
+            "Panda trajectory controller ready; looping SRDF ready -> extended -> ready."
         )
 
     def start_trajectory(self):
