@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="panda_tracker" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find tool_tracker)/urdf/panda.urdf" />
+  <xacro:macro name="panda_joint_position_controller" params="joint_name effort_limit">
+    <gazebo>
+      <plugin
+        filename="ignition-gazebo-joint-position-controller-system"
+        name="ignition::gazebo::systems::JointPositionController">
+        <joint_name>${joint_name}</joint_name>
+        <topic>/model/panda_tracker/joint/${joint_name}/cmd_pos</topic>
+        <p_gain>100</p_gain>
+        <i_gain>0</i_gain>
+        <d_gain>10</d_gain>
+        <cmd_max>${effort_limit}</cmd_max>
+        <cmd_min>-${effort_limit}</cmd_min>
+      </plugin>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:panda_joint_position_controller joint_name="panda_joint1" effort_limit="87" />
+  <xacro:panda_joint_position_controller joint_name="panda_joint2" effort_limit="87" />
+  <xacro:panda_joint_position_controller joint_name="panda_joint3" effort_limit="87" />
+  <xacro:panda_joint_position_controller joint_name="panda_joint4" effort_limit="87" />
+  <xacro:panda_joint_position_controller joint_name="panda_joint5" effort_limit="12" />
+  <xacro:panda_joint_position_controller joint_name="panda_joint6" effort_limit="12" />
+  <xacro:panda_joint_position_controller joint_name="panda_joint7" effort_limit="12" />
+
+  <material name="red">
+    <color rgba="1 0 0 1"/>
+  </material>
+
+  <gazebo>
+    <plugin
+      filename="ignition-gazebo-sensors-system"
+      name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+  </gazebo>
+
+  <link name="world"></link>
+
+  <joint name="world_to_panda" type="fixed">
+    <parent link="world"/>
+    <child link="panda_link0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="camera_link">
+    <visual>
+      <geometry>
+        <box size="0.015 0.08 0.08"/>
+      </geometry>
+      <material name="red" />
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.015 0.08 0.08"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="2"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <parent link="world"/>
+    <child link="camera_link"/>
+    <origin xyz="1.15 -1.5 1.3" rpy="0 0.356 2.111"/>
+  </joint>
+
+  <link name="camera_link_optical"></link>
+
+  <joint name="camera_optical_joint" type="fixed">
+    <parent link="camera_link"/>
+    <child link="camera_link_optical"/>
+    <!-- Standard ROS to Optical Frame Transform: -90 deg roll, -90 deg yaw -->
+    <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+  </joint>
+
+  <gazebo reference="camera_link">
+    <sensor name="camera" type="camera">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <always_on>true</always_on>
+      <update_rate>10</update_rate>
+      <topic>camera/image_raw</topic>
+      <camera>
+        <camera_info_topic>camera/camera_info</camera_info_topic>
+        <horizontal_fov>1.3</horizontal_fov>
+        <image>
+          <format>R8G8B8</format>
+          <width>640</width>
+          <height>480</height>
+        </image>
+        <clip>
+          <near>0.05</near>
+          <far>8.0</far>
+        </clip>
+        <gz_frame_id>camera_link_optical</gz_frame_id>
+      </camera>
+    </sensor>  
+  </gazebo>
+
+</robot>
