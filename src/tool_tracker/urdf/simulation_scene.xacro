@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot name="panda_tracker" xmlns:xacro="http://www.w3.org/2001/XMLSchema-instance">
+<robot name="panda_tracker" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find tool_tracker)/urdf/panda.urdf" />
+  <xacro:macro name="panda_joint_position_controller" params="joint_name effort_limit">
+    <gazebo>
+      <plugin
+        filename="ignition-gazebo-joint-position-controller-system"
+        name="ignition::gazebo::systems::JointPositionController">
+        <joint_name>${joint_name}</joint_name>
+        <topic>/model/panda_tracker/joint/${joint_name}/cmd_pos</topic>
+        <p_gain>100</p_gain>
+        <i_gain>0</i_gain>
+        <d_gain>10</d_gain>
+        <cmd_max>${effort_limit}</cmd_max>
+        <cmd_min>-${effort_limit}</cmd_min>
+      </plugin>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:panda_joint_position_controller joint_name="panda_joint1" effort_limit="87" />
+  <xacro:panda_joint_position_controller joint_name="panda_joint2" effort_limit="87" />
+  <xacro:panda_joint_position_controller joint_name="panda_joint3" effort_limit="87" />
+  <xacro:panda_joint_position_controller joint_name="panda_joint4" effort_limit="87" />
+  <xacro:panda_joint_position_controller joint_name="panda_joint5" effort_limit="12" />
+  <xacro:panda_joint_position_controller joint_name="panda_joint6" effort_limit="12" />
+  <xacro:panda_joint_position_controller joint_name="panda_joint7" effort_limit="12" />
+
   <material name="red">
     <color rgba="1 0 0 1"/>
   </material>

@@ -28,7 +28,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            "CameraSubscriber_py = tool_tracker.CamSubscriber:main"
+            "CameraSubscriber_py = tool_tracker.CamSubscriber:main",
+            "PandaController_py = tool_tracker.PandaController:main"
         ],
     },
 )

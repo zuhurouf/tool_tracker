@@ -7,18 +7,19 @@ from launch.actions import IncludeLaunchDescription, SetEnvironmentVariable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 
-
 def generate_launch_description():
     set_ign_resource_path = SetEnvironmentVariable(
-            name="IGN_GAZEBO_RESOURCE_PATH",
-            value="/opt/ros/humble/share"
+        name="IGN_GAZEBO_RESOURCE_PATH",
+        value="/opt/ros/humble/share"
     )
     ros_gz_pkg_dir = get_package_share_directory("ros_gz_sim")
     pkg_panda_share_dir = get_package_share_directory("tool_tracker")
     xacro_file = os.path.join(pkg_panda_share_dir, "urdf", "simulation_scene.xacro")
 
     if not os.path.exists(xacro_file):
-            raise FileNotFoundError(f"Xacro file not found at expected path: {xacro_file}")
+        raise FileNotFoundError(
+            f"Xacro file not found at expected path: {xacro_file}"
+        )
     robot_description = xacro.process_file(xacro_file).toxml()
 
     gazebo_node = IncludeLaunchDescription(
@@ -29,21 +30,21 @@ def generate_launch_description():
     )
 
     robot_state_publisher_node = Node(
-            package="robot_state_publisher",
-            executable="robot_state_publisher",
-            parameters=[{"robot_description": robot_description}],
-            output="screen",
+        package="robot_state_publisher",
+        executable="robot_state_publisher",
+        parameters=[{"robot_description": robot_description}],
+        output="screen",
     )
 
     robot_spawner_node = Node(
         package="ros_gz_sim",
         executable="create",
         arguments=[
-              "-topic", "robot_description",
-              "-name", "panda_tracker",
-              "-x", "0.0",
-              "-y", "0.0",
-              "-z", "0.0"
+            "-topic", "robot_description",
+            "-name", "panda_tracker",
+            "-x", "0.0",
+            "-y", "0.0",
+            "-z", "0.0"
         ],
         parameters=[{
               "robot_description": robot_description,
@@ -58,7 +59,22 @@ def generate_launch_description():
         arguments=[
             "/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock",
             "/camera/image_raw@sensor_msgs/msg/Image[ignition.msgs.Image",
-            "/camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo"
+            "/camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo",
+            *[
+                (
+                    f"/model/panda_tracker/joint/{joint_name}/cmd_pos"
+                    "@std_msgs/msg/Float64]ignition.msgs.Double"
+                )
+                for joint_name in (
+                    "panda_joint1",
+                    "panda_joint2",
+                    "panda_joint3",
+                    "panda_joint4",
+                    "panda_joint5",
+                    "panda_joint6",
+                    "panda_joint7",
+                )
+            ],
         ],
         output="screen"
     )
@@ -69,11 +85,18 @@ def generate_launch_description():
           output="screen"
     )
 
+    panda_controller_node = Node(
+        package="tool_tracker",
+        executable="PandaController_py",
+        output="screen",
+    )
+
     return LaunchDescription([
-        set_ign_resource_path,  
+        set_ign_resource_path,
         gazebo_node,
         robot_state_publisher_node,
         bridge_node,
         robot_spawner_node,
-        cam_subscriber_node
+        cam_subscriber_node,
+        panda_controller_node,
     ])

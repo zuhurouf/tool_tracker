@@ -26,6 +26,17 @@ def generate_launch_description():
         name="joint_state_publisher_gui"
     )
 
+    bridge_node = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock",
+            "/camera/image_raw@sensor_msgs/msg/Image[ignition.msgs.Image",
+            "/camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo"
+        ],
+        output="screen"
+    )
+
     rviz_node = Node(
         package="rviz2",
         executable="rviz2",
@@ -42,6 +53,7 @@ def generate_launch_description():
     return LaunchDescription([
         robot_state_publisher_node,
         joint_state_publisher_gui_node,
+        bridge_node,
         rviz_node,
         cam_subscriber_node
     ])
