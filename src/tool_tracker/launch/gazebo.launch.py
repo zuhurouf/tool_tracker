@@ -96,9 +96,9 @@ def generate_launch_description():
         output="screen"
     )
 
-    cam_subscriber_node = Node(
+    tool_detector_node = Node(
           package="tool_tracker",
-          executable="CameraSubscriber_py",
+          executable="Detector_py",
           output="screen"
     )
 
@@ -115,6 +115,6 @@ def generate_launch_description():
         robot_state_publisher_node,
         bridge_node,
         robot_spawner_node,
-        cam_subscriber_node,
+        tool_detector_node,
         panda_controller_node,
     ])

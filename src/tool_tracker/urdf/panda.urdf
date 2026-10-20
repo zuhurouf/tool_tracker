@@ -228,12 +228,12 @@
     <link name="panda_marker">
         <visual>
             <geometry>
-                <mesh filename="package://tool_tracker/meshes/Aruco_block.dae" scale="1 1 1"/>
+                <mesh filename="package://tool_tracker/meshes/Aruco_block.dae" scale="1.333333 1.333333 1"/>
             </geometry>
         </visual>
         <collision>
             <geometry>
-                <box size="0.06 0.06 0.002"/>
+                <box size="0.08 0.08 0.002"/>
             </geometry>
         </collision>
         <inertial>
