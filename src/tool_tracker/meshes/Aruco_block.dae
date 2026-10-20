@@ -7,7 +7,7 @@
     <created>2026-10-20T12:00:00</created>
     <modified>2026-10-20T12:00:00</modified>
     <unit meter="1" name="meter"/>
-    <up_axis>Z_UP</up_axis>
+    <up_axis>X_UP</up_axis>
   </asset>
   <library_images>
     <image id="marker_img" name="marker_img">
