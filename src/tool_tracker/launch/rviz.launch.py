@@ -44,10 +44,10 @@ def generate_launch_description():
         output="screen"
     )
     
-    cam_subscriber_node = Node(
-              package="tool_tracker",
-              executable="CameraSubscriber_py",
-              output="screen"
+    tool_detector_node = Node(
+        package="tool_tracker",
+        executable="Detector_py",
+        output="screen"
     )
 
     return LaunchDescription([
@@ -55,5 +55,5 @@ def generate_launch_description():
         joint_state_publisher_gui_node,
         bridge_node,
         rviz_node,
-        cam_subscriber_node
+        tool_detector_node
     ])

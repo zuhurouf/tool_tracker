@@ -8,13 +8,30 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 
 def generate_launch_description():
-    set_ign_resource_path = SetEnvironmentVariable(
-        name="IGN_GAZEBO_RESOURCE_PATH",
-        value="/opt/ros/humble/share"
-    )
     ros_gz_pkg_dir = get_package_share_directory("ros_gz_sim")
     pkg_panda_share_dir = get_package_share_directory("tool_tracker")
     xacro_file = os.path.join(pkg_panda_share_dir, "urdf", "simulation_scene.xacro")
+    package_resource_root = os.path.dirname(pkg_panda_share_dir)
+
+    ign_resource_paths = [
+        package_resource_root,
+        os.environ.get("IGN_GAZEBO_RESOURCE_PATH", ""),
+        "/opt/ros/humble/share",
+    ]
+    set_ign_resource_path = SetEnvironmentVariable(
+        name="IGN_GAZEBO_RESOURCE_PATH",
+        value=os.pathsep.join(path for path in ign_resource_paths if path),
+    )
+
+    gz_resource_paths = [
+        package_resource_root,
+        os.environ.get("GZ_SIM_RESOURCE_PATH", ""),
+    ]
+    set_gz_resource_path = SetEnvironmentVariable(
+        name="GZ_SIM_RESOURCE_PATH",
+        value=os.pathsep.join(path for path in gz_resource_paths if path),
+    )
+
 
     if not os.path.exists(xacro_file):
         raise FileNotFoundError(
@@ -79,9 +96,9 @@ def generate_launch_description():
         output="screen"
     )
 
-    cam_subscriber_node = Node(
+    tool_detector_node = Node(
           package="tool_tracker",
-          executable="CameraSubscriber_py",
+          executable="Detector_py",
           output="screen"
     )
 
@@ -93,10 +110,11 @@ def generate_launch_description():
 
     return LaunchDescription([
         set_ign_resource_path,
+        set_gz_resource_path,
         gazebo_node,
         robot_state_publisher_node,
         bridge_node,
         robot_spawner_node,
-        cam_subscriber_node,
+        tool_detector_node,
         panda_controller_node,
     ])
