@@ -213,9 +213,6 @@
             <geometry>
                 <mesh filename="package://moveit_resources_panda_description/meshes/visual/hand.dae" />
             </geometry>
-            <material name="AprilTagMarker">
-                <texture filename="package://tool_tracker/meshes/marker.png"/>
-            </material>
         </visual>
         <collision>
             <geometry>
@@ -226,6 +223,23 @@
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <mass value="1.0"/>
             <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    <link name="panda_marker">
+        <visual>
+            <geometry>
+                <mesh filename="package://tool_tracker/meshes/Aruco_block.dae" scale="1 1 1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.06 0.06 0.002"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
         </inertial>
     </link>
     <link name="panda_leftfinger">
@@ -264,6 +278,12 @@
             <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0" ixz="0" iyz="0"/>
         </inertial>
     </link>
+    <joint name="panda_hand_marker_joint" type="fixed">
+        <parent link="panda_hand"/>
+        <child link="panda_marker"/>
+        <origin xyz="0.068 0 0.068" rpy="0 3.14159265359 0"/>
+        <axis xyz="1 0 0"/>
+    </joint>
     <joint name="panda_finger_joint1" type="prismatic">
         <parent link="panda_hand" />
         <child link="panda_leftfinger" />
