@@ -16,14 +16,19 @@ JOINT_NAMES = (
     "panda_joint7",
 )
 
-HOME_POSITION = (0.0, -0.785, 0.0, -2.356, 0.0, 1.571, 0.785)
-EXTENDED_POSITION = (0.0, 0.0, 0.0, 0.0, 0.0, 1.571, 0.785)
+HOME_POSITION = (0.0, 0.0, -0.172, -1.2, -0.266, 1.592, 0.486)
+# Keep the sweep close to home so the hand does not fold too far inward/outward.
+LEFT_POSITION = (*HOME_POSITION[:2], -0.422, *HOME_POSITION[3:])
+RIGHT_POSITION = (*HOME_POSITION[:2], 0.078, *HOME_POSITION[3:])
 TRAJECTORY = (
     (0.0, HOME_POSITION),
-    (4.0, EXTENDED_POSITION),
-    (6.0, EXTENDED_POSITION),
-    (9.0, HOME_POSITION),
-    (11.0, HOME_POSITION),
+    (2.0, HOME_POSITION),
+    (5.0, LEFT_POSITION),
+    (7.0, LEFT_POSITION),
+    (11.0, RIGHT_POSITION),
+    (13.0, RIGHT_POSITION),
+    (16.0, HOME_POSITION),
+    (18.0, HOME_POSITION),
 )
 TRAJECTORY_DURATION = TRAJECTORY[-1][0]
 PUBLISH_PERIOD = 0.05
@@ -44,7 +49,8 @@ class PandaController(Node):
         self.start_timer = self.create_timer(2.0, self.start_trajectory)
         self.trajectory_timer = None
         self.get_logger().info(
-            "Panda trajectory controller ready; looping SRDF ready -> extended -> ready."
+            "Panda controller ready; holding the screenshot home pose and "
+            "sweeping panda_joint3 left and right."
         )
 
     def start_trajectory(self):

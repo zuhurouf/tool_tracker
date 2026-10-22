@@ -281,7 +281,8 @@
     <joint name="panda_hand_marker_joint" type="fixed">
         <parent link="panda_hand"/>
         <child link="panda_marker"/>
-        <origin xyz="0.020 0 0.038" rpy="0 1.57079632679 0"/>
+        <!-- Offset outward from the palm so the camera-facing tag is not occluded. -->
+        <origin xyz="0.050 0 0.050" rpy="0 1.57079632679 0"/>
         <axis xyz="1 0 0"/>
     </joint>
     <joint name="panda_finger_joint1" type="prismatic">

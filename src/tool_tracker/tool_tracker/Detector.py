@@ -47,16 +47,6 @@ class Detector(Node):
                     color=self.GREEN,
                     thickness=3,
                 )
-                label_position = tuple(corners[0])
-                cv2.putText(
-                    current_frame,
-                    f"ID: {r.tag_id}",
-                    label_position,
-                    cv2.FONT_HERSHEY_SIMPLEX,
-                    0.6,
-                    self.GREEN,
-                    2,
-                )
 
             annotated_msg = self.cv_bridge.cv2_to_imgmsg(
                 current_frame,

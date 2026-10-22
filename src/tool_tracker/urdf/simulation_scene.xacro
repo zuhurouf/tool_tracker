@@ -67,8 +67,8 @@
   <joint name="camera_joint" type="fixed">
     <parent link="world"/>
     <child link="camera_link"/>
-    <!-- In front of the robot, aimed down toward the center of the arm workspace. -->
-    <origin xyz="1.2 0 1.2" rpy="0 0.5 3.14159265359"/>
+    <!-- In front of the raised marker path, centered and aimed slightly down. -->
+    <origin xyz="1.35 -0.12 0.37" rpy="0 0 3.14159265359"/>
   </joint>
 
   <link name="camera_link_optical"></link>
