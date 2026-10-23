@@ -15,7 +15,9 @@ class Detector(Node):
         self.GREEN = (0, 255, 0)
         self.BLUE = (0, 0, 255)
         self.detector = apriltag.Detector(
-            apriltag.DetectorOptions(families="tag36h11")
+            apriltag.DetectorOptions(
+                families="tag36h11"
+                )
         )
         self.cam_subscriber = self.create_subscription(
             msg_type=Image,
