@@ -18,7 +18,7 @@ JOINT_NAMES = (
     "panda_joint7",
 )
 
-HOME_POSITION = (0.0, 0.0, -0.172, -1.2, -0.266, 1.592, 0.486)
+HOME_POSITION = (0.0, 0.0, 0.0, -1.652, -0.047, 1.613, 0.705)
 JOINT_ORIGINS = (
     ((0.0, 0.0, 0.333), (0.0, 0.0, 0.0)),
     ((0.0, 0.0, 0.0), (-math.pi / 2, 0.0, 0.0)),
@@ -39,10 +39,10 @@ JOINT_LIMITS = np.array((
 ))
 HAND_TRANSFORM = ((0.0, 0.0, 0.107), (0.0, 0.0, -math.pi / 4))
 MARKER_TRANSFORM = ((0.050, 0.0, 0.050), (0.0, math.pi / 2, 0.0))
-CIRCLE_RADIUS = 0.07
+CIRCLE_RADIUS = 0.14
 CIRCLE_PERIOD = 10.0
 APPROACH_DURATION = 3.0
-CIRCLE_HEIGHT_OFFSET = 0.12
+CIRCLE_HEIGHT_OFFSET = 0.0
 ORIENTATION_WEIGHT = 0.25
 PUBLISH_PERIOD = 0.05
 
@@ -108,30 +108,24 @@ def rotation_vector(rotation):
     return angle * skew_vector / (2.0 * math.sin(angle))
 
 
-def solve_marker_ik(target_position, target_normal, seed):
+def solve_marker_ik(target_position, target_orientation, seed):
     joint_positions = np.asarray(seed, dtype=float).copy()
     for _ in range(30):
         pose, position_jacobian, orientation_jacobian = marker_pose_and_jacobian(
             joint_positions
         )
         position_error = target_position - pose[:3, 3]
-        # Keep the printed face directed toward the camera, but leave rotation
-        # around its normal free. This avoids over-constraining the Panda wrist.
-        marker_normal = pose[:3, 2]
-        normal_error = target_normal - marker_normal
+        orientation_error = rotation_vector(target_orientation @ pose[:3, :3].T)
         error = np.concatenate((
             position_error,
-            ORIENTATION_WEIGHT * normal_error,
+            ORIENTATION_WEIGHT * orientation_error,
         ))
-        if np.linalg.norm(position_error) < 0.002 and np.linalg.norm(normal_error) < 0.02:
+        if np.linalg.norm(position_error) < 0.002 and np.linalg.norm(orientation_error) < 0.02:
             return joint_positions
 
-        normal_jacobian = np.column_stack([
-            np.cross(axis, marker_normal) for axis in orientation_jacobian.T
-        ])
         jacobian = np.vstack((
             position_jacobian,
-            ORIENTATION_WEIGHT * normal_jacobian,
+            ORIENTATION_WEIGHT * orientation_jacobian,
         ))
         damping = 0.04
         delta = jacobian.T @ np.linalg.solve(
@@ -200,7 +194,7 @@ class PandaController(Node):
             target_position[2] += CIRCLE_RADIUS * math.cos(phase)
         solution = solve_marker_ik(
             target_position,
-            self.home_marker_pose[:3, 2],
+            self.home_marker_pose[:3, :3],
             self.last_position,
         )
         if solution is None:

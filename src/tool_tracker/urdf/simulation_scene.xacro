@@ -67,8 +67,8 @@
   <joint name="camera_joint" type="fixed">
     <parent link="world"/>
     <child link="camera_link"/>
-    <!-- Aim at the elevated circle, which lies in the camera image plane (world Y-Z). -->
-    <origin xyz="1.42 -0.12 0.33" rpy="0 0 3.14159265359"/>
+    <!-- Aim at the elevated, camera-facing circle in front of the robot. -->
+    <origin xyz="1.42 0 0.33" rpy="0 0 3.111"/>
   </joint>
 
   <link name="camera_link_optical"></link>
