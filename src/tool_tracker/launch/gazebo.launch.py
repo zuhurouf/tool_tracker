@@ -108,6 +108,12 @@ def generate_launch_description():
         output="screen",
     )
 
+    pose_estimator_node = Node(
+        package="tool_tracker",
+        executable="PoseEstimator_py",
+        output="screen"
+    )
+
     return LaunchDescription([
         set_ign_resource_path,
         set_gz_resource_path,
@@ -117,4 +123,5 @@ def generate_launch_description():
         robot_spawner_node,
         tool_detector_node,
         panda_controller_node,
+        pose_estimator_node
     ])

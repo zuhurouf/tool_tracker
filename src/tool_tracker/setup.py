@@ -29,6 +29,7 @@ setup(
     entry_points={
         'console_scripts': [
             "Detector_py = tool_tracker.Detector:main",
+            "PoseEstimator_py = tool_tracker.PoseEstimator:main",
             "PandaController_py = tool_tracker.PandaController:main"
         ],
     },
