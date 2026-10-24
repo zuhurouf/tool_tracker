@@ -25,11 +25,6 @@ class Detector(Node):
             qos_profile=qos_profile_sensor_data,
             callback=self.handler
         )
-        self.detection_publisher = self.create_publisher(
-            Image,
-            "camera/detections_image",
-            qos_profile_sensor_data,
-        )
         self.cv_bridge = CvBridge()
         self.get_logger().info("End-effector detector instantiated")
 
@@ -49,14 +44,7 @@ class Detector(Node):
                     color=self.GREEN,
                     thickness=3,
                 )
-
-            annotated_msg = self.cv_bridge.cv2_to_imgmsg(
-                current_frame,
-                encoding="bgr8",
-            )
-            annotated_msg.header = msg.header
-            self.detection_publisher.publish(annotated_msg)
-
+            
             cv2.imshow("Tool tracker", current_frame)
             cv2.waitKey(1)
         except Exception as err:
