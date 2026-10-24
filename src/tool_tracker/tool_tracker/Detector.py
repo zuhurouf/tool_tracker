@@ -15,7 +15,9 @@ class Detector(Node):
         self.GREEN = (0, 255, 0)
         self.BLUE = (0, 0, 255)
         self.detector = apriltag.Detector(
-            apriltag.DetectorOptions(families="tag36h11")
+            apriltag.DetectorOptions(
+                families="tag36h11"
+                )
         )
         self.cam_subscriber = self.create_subscription(
             msg_type=Image,
@@ -46,16 +48,6 @@ class Detector(Node):
                     isClosed=True,
                     color=self.GREEN,
                     thickness=3,
-                )
-                label_position = tuple(corners[0])
-                cv2.putText(
-                    current_frame,
-                    f"ID: {r.tag_id}",
-                    label_position,
-                    cv2.FONT_HERSHEY_SIMPLEX,
-                    0.6,
-                    self.GREEN,
-                    2,
                 )
 
             annotated_msg = self.cv_bridge.cv2_to_imgmsg(
