@@ -26,7 +26,7 @@ class PoseEstimator(Node):
     Cx, Cy = 320, 240
 
     TAG_SIZE = 0.06
-    HALF_SIZE = 0.03
+    HALF_SIZE = TAG_SIZE/2
     def __init__(self):
         super().__init__("PoseEstimator")
         self.coordinates_subscriber = self.create_subscription(
